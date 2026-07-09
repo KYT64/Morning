@@ -1,35 +1,35 @@
 
 const data=[
-{welcome:true,title:"Sana özel hazırlanmış bulmacaya hoşgeldin Patroniçem :)"},
-{q:"Bir çalışan haftanın kaç günü çalışmalıdır.",answers:["yedi","7"],popup:"El Insaf :D"},
-{q:"En muhteşem partnerler hangi ulaşım aracını kullanmayı severler?",answers:["motosiklet","motosikleti"],popup:"Harikasın, kaskını hazırla birlikte yola çıkacağız"},
-{q:"Yetişkin bir Yiğit, hangi yolu seçmeyi sever?",answers:["zor"],popup:"Bak Birbirimizi cok iyi tanıyoruz :D"},
-{end:true}
+{w:true,t:"Sana özel hazırlanmış bulmacaya hoşgeldin Patroniçem :)"},
+{q:"Bir çalışan haftanın kaç günü çalışmalıdır.",a:["yedi","7"],m:"El Insaf :D"},
+{q:"En muhteşem partnerler hangi ulaşım aracını kullanmayı severler?",a:["motosiklet","motosikleti"],m:"Harikasın, kaskını hazırla birlikte yola çıkacağız"},
+{q:"Yetişkin bir Yiğit, hangi yolu seçmeyi sever?",a:["zor"],m:"Bak Birbirimizi cok iyi tanıyoruz :D"},
+{e:true}
 ];
-let step=0;const app=document.getElementById("app");
-function boxes(n){let h='<div class="boxes">';for(let i=0;i<n;i++)h+='<div class="box"></div>';return h+'</div>';}
-function render(){
- const s=data[step];
- if(s.welcome){
-  app.innerHTML=`<h1>${s.title}</h1><p>Hazırsan başlayalım 😊</p><button id="b">Başla</button>`;
-  b.onclick=()=>{step++;render();}
- }else if(s.end){
-  app.innerHTML=`<h1>Günaydın Patroniçem ☀️</h1>
-  <p>Sana bugün farklı bir şekilde "Günaydın" demek istedim.</p>
-  <p><strong>Umarım günün çok güzel geçer❤️</strong></p>
-  <div class="heart">❤️</div>`;
+let s=0,app=document.getElementById("app");
+const boxes=n=>'<div class="boxes">'+Array.from({length:n},()=>'<div class="box"></div>').join("")+'</div>';
+function draw(){
+ let d=data[s];
+ if(d.w){
+   app.innerHTML=`<h1>${d.t}</h1><button id="b">Başla</button>`;
+   b.onclick=()=>{s++;draw();}
+ }else if(d.e){
+   app.innerHTML=`<h1>Günaydın Patroniçem ☀️</h1>
+   <p>Sana bugün farklı bir şekilde "Günaydın" demek istedim.</p>
+   <p><strong>Umarım günün çok güzel geçer❤️</strong></p>
+   <div class="heart">❤️</div>`;
  }else{
-  app.innerHTML=`<h2>Soru ${step}</h2><p>${s.q}</p>${boxes(s.answers[0].length)}
-  <input id="ans" placeholder="Cevabını yaz"><br><br><button id="ok">Kontrol Et</button>`;
-  ok.onclick=()=>{
-    const v=ans.value.trim().toLowerCase();
-    if(s.answers.includes(v)){
-      app.innerHTML+=`<div class="msg">${s.popup}<br><br><button id="next">Devam</button></div>`;
-      next.onclick=()=>{step++;render();}
-    }else{
-      ans.animate([{transform:"translateX(-5px)"},{transform:"translateX(5px)"},{transform:"translateX(0)"}],{duration:220});
-    }
-  }
+   app.innerHTML=`<h2>Soru ${s}</h2><p>${d.q}</p>${boxes(d.a[0].length)}
+   <input id="ans"><br><br><button id="ok">Kontrol Et</button>`;
+   ok.onclick=()=>{
+      const v=ans.value.trim().toLowerCase();
+      if(d.a.includes(v)){
+        app.innerHTML+=`<div class="msg">${d.m}<br><br><button id="n">Devam</button></div>`;
+        n.onclick=()=>{s++;draw();}
+      }else{
+        ans.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:220});
+      }
+   }
  }
 }
-render();
+draw();
