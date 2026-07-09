@@ -1,49 +1,11 @@
-
-html,body{margin:0;height:100%;overflow:hidden;font-family:Arial,sans-serif}
+html,body{margin:0;height:100%;overflow:hidden;font-family:system-ui,sans-serif}
+#bg{position:fixed;inset:0}
 body{display:flex;justify-content:center;align-items:center}
-.background{
-position:fixed;inset:0;
-background:linear-gradient(180deg,#ffd89c 0%,#ffeec9 18%,#bfe8ff 55%,#8fd8f6 100%);
-overflow:hidden}
-.sun{
-position:absolute;top:8%;left:50%;transform:translateX(-50%);
-width:170px;height:170px;border-radius:50%;
-background:#ffd966;
-box-shadow:0 0 90px rgba(255,220,100,.9)}
-.cloud{
-position:absolute;height:40px;width:180px;border-radius:30px;
-background:rgba(255,255,255,.75);filter:blur(2px);
-animation:drift 60s linear infinite}
-.cloud:before,.cloud:after{
-content:"";position:absolute;background:inherit;border-radius:50%}
-.cloud:before{width:70px;height:70px;left:20px;top:-25px}
-.cloud:after{width:90px;height:90px;left:75px;top:-40px}
-.c1{top:18%;left:-220px}
-.c2{top:30%;left:-350px;animation-duration:80s}
-.c3{top:12%;left:-500px;animation-duration:95s}
-@keyframes drift{to{transform:translateX(calc(100vw + 700px));}}
-.sea{
-position:absolute;left:0;right:0;bottom:0;height:38%;
-background:linear-gradient(#63c9ef,#2f9fcb);
-animation:wave 8s ease-in-out infinite}
-@keyframes wave{50%{transform:translateY(5px)}}
-.shine{
-position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-width:220px;height:38%;
-background:linear-gradient(to bottom,rgba(255,255,255,.0),rgba(255,255,255,.35),rgba(255,255,255,.0));
-filter:blur(12px)}
-.card{
-position:relative;z-index:2;
-width:min(92vw,650px);
-background:rgba(255,255,255,.72);
-backdrop-filter:blur(14px);
-padding:36px;border-radius:28px;
-box-shadow:0 20px 45px rgba(0,0,0,.15);
-text-align:center}
-button{padding:12px 28px;border:none;border-radius:24px;background:#2d7ef7;color:#fff;cursor:pointer}
-input{padding:12px;width:80%;border-radius:10px;border:1px solid #9fc4de}
+.card{position:relative;z-index:2;width:min(92vw,640px);background:rgba(255,255,255,.72);backdrop-filter:blur(16px);
+padding:36px;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,.2);text-align:center}
+button{padding:12px 26px;border:none;border-radius:999px;background:#2b7cff;color:#fff;cursor:pointer}
+input{padding:12px;width:80%;border-radius:10px;border:1px solid #9dc3df}
 .boxes{display:flex;justify-content:center;gap:8px;margin:18px}
-.box{width:38px;height:48px;border:2px solid #8fb2ca;border-radius:10px;background:#fff}
-.msg{margin-top:16px;padding:14px;background:#eef8ff;border-radius:12px}
-.heart{font-size:34px;animation:pulse 2.5s infinite}
-@keyframes pulse{50%{transform:scale(1.08)}}
+.box{width:38px;height:48px;border:2px solid #8db0cb;border-radius:8px;background:#fff}
+.modal{margin-top:18px;padding:14px;background:#eef8ff;border-radius:12px}
+.heart{font-size:34px;animation:p 2s infinite}@keyframes p{50%{transform:scale(1.08)}}
